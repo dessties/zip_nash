@@ -1,9 +1,7 @@
-﻿#include <stdio.h>
+﻿#include "source/file_system.h"
 
-
-int main(void)
-{
-	printf("Hello, World!\n");
+int main(void) {
+	func();
 
 	return 0;
 }
