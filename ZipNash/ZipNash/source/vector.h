@@ -2,6 +2,7 @@
 #define VECTOR_H
 
 #include<stdio.h>
+#include <stdlib.h>
 
 typedef struct {
 	size_t length;
@@ -12,8 +13,8 @@ typedef struct {
 //init vector
 void init_vector(Vector* vector, int capacity){
 	vector->array = (int*)calloc(capacity, sizeof(int));
-	vector->capacity = capacity //максимальний розмір
-	vector->length = 0 //початковий розмір
+	vector->capacity = capacity; //максимальний розмір
+	vector->length = 0; //початковий розмір
 }
 /*
 ініціалізація вектора з параметрами
@@ -29,17 +30,17 @@ In C and C++, the size of an int is typically 4 bytes on 32-bit systems and 8 by
 
 //add items
 void add_item(Vector* vector, int item) {
-	if (vector->size >= vector->capacity) //досягнуто максимаьну ємність
+	if (vector->length >= vector->capacity) //досягнуто максимаьну ємність
 	{
 		vector->capacity *= 2; //збільшив ємність в 2 рази
-		vector->array = (int*)realloc(capacity * sizeof(int)); //перевиділив паять для нової ємності
+		vector->array = (int*)realloc(vector->capacity, sizeof(int)); //перевиділив паять для нової ємності
 	}
 	vector->array[vector->length++] = item;
 }
 
 void freeVector(Vector* vector) {
 	free(vector->array); // Звільняємо масив
-	vector->size = 0; // Скидаємо розмір
+	vector->length = 0; // Скидаємо розмір
 	vector->capacity = 0; // Скидаємо максимальний розмір
 }
 
